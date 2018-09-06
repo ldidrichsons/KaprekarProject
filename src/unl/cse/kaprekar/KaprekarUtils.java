@@ -1,7 +1,7 @@
 package unl.cse.kaprekar;
 
 public class KaprekarUtils {
-	
+
 	/**
 	 * <p>This method tests whether the given input <code>n</code>
 	 * is a Kaprekar Number or not.  A Kaprekar Number is a non-negative
@@ -28,19 +28,20 @@ public class KaprekarUtils {
 			return false;
 		}
 		
-		//we use a long to accommodate larger squares
+		//we use a long to accommodate larger squares	
 		long square = n * n;
-		int numDigits = (int)Math.log10(n) + 1;
+		int numDigits = (int)Math.log10(square) + 1;
 		long modulus = 1;
 		long first, second;
-		for(int i=1; i<=numDigits; i++) {
+		for(int i = 1; i <= numDigits; i++) {
 			modulus *= 10;
 			first = square / modulus;
 			second = square % modulus;
-			if(first > 0 && first + second <= n) {
+			if(second > 0 && first + second == n) {
 				return true;
 			}
 		}
+		
 		return false;
 		
 	}
